@@ -7,7 +7,7 @@ void main(void) {
 
 	srand(time(NULL));
 	int c1, c2, c3;
-	int input;
+	int input = 0;
 	int p1, p2, p3;
 	int countChance = 20;
 	int countBall, countStrike;
@@ -31,9 +31,17 @@ void main(void) {
 	{
 		countBall = 0;
 		countStrike = 0;
+		
+
 		cout << "숫자를 입력하세요 (남은 회수 " << countChance << "번) : ";
 
-		cin >> input;
+		while (!(cin >> input)) {
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+			cout << "잘못된 값을 입력하셨습니다. 숫자만 입력해주세요 : ";
+		}
+
+
 		p1 = input / 100;
 		p2 = input % 100 / 10;
 		p3 = input % 10;
