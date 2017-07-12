@@ -50,4 +50,119 @@ void main(void) {
 		cout << endl;
 	}
 
+
+
+
+	//추가
+	//이중 for문 없이
+	//과제 1
+	cout << "과제1" << endl;
+	int j = 0;
+	bool line = true;
+	for (int i = 0; i < 25; i++) {
+		if (line)
+		{
+			j = (i / 5) + 1;
+			line = false;
+		}
+		if (j > 0)
+		{
+			cout << "*";
+			j--;
+		}
+		else
+		{
+			cout << " ";
+		}
+		if ((i + 1) % 5 == 0)
+		{
+			cout << endl;
+			line = true;
+		}
+	}
+	//과제 2
+	cout << "과제2" << endl;
+	j = 0;
+	line = true;
+	for (int i = 24; i >= 0; i--) {
+		if (line)
+		{
+			j = (i / 5) + 1;
+			line = false;
+		}
+		if (j > 0)
+		{
+			cout << "*";
+			j--;
+		}
+		else
+		{
+			cout << " ";
+		}
+		if ((i) % 5 == 0)
+		{
+			cout << endl;
+			line = true;
+		}
+	}
+	//과제 3
+	cout << "과제3" << endl;
+	j = 0;
+	line = true;
+	for (int i = 24; i >= 0; i--) {
+		if (line)
+		{
+			j = (i / 5);
+			line = false;
+		}
+		if (j > 0)
+		{
+			cout << " ";
+			j--;
+		}
+		else
+		{
+			cout << "*";
+		}
+		if ((i) % 5 == 0)
+		{
+			cout << endl;
+			line = true;
+		}
+	}
+	//과제 4
+	cout << "과제4" << endl;
+	j = 0;
+	line = true;
+	for (int i = 0; i < 25; i++) {
+		if (line)
+		{
+			j = (i / 5);
+			line = false;
+		}
+		if (j > 0)
+		{
+			cout << " ";
+			j--;
+		}
+		else
+		{
+			cout << "*";
+		}
+		if ((i + 1) % 5 == 0)
+		{
+			cout << endl;
+			line = true;
+		}
+	}
+
+
+	//정답
+	char* star = "*****";
+	char* space = "     ";
+
+	for (int i = 0; i < 5; i++) {
+		cout << star + i << endl;
+	}
 }
+
