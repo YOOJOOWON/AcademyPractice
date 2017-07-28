@@ -2,8 +2,8 @@
 
 //API : Application Programming Interface
 
-HINSTANCE _hInstance;		//¾îÇÃ °íÀ¯¹øÈ£
-HWND _hWnd;					//Á¶ÀÛÁú
+HINSTANCE _hInstance;		//ì–´í”Œ ê³ ìœ ë²ˆí˜¸
+HWND _hWnd;					//ì¡°ì‘ì§ˆ
 
 LPTSTR _lpszClass = TEXT("Iota Team");
 
@@ -11,49 +11,49 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int cmdShow)
 {
-	MSG message;			//¸Ş¼¼Áö
-	WNDCLASS wndClass;		//À©µµ¿ì Á¤º¸¸¦ ´ãÀ» ±¸Á¶Ã¼
+	MSG message;			//ë©”ì„¸ì§€
+	WNDCLASS wndClass;		//ìœˆë„ìš° ì •ë³´ë¥¼ ë‹´ì„ êµ¬ì¡°ì²´
 
 	//Salt Bae 
 	_hInstance = hInstance;
 
-	wndClass.cbClsExtra = 0;										//Å¬·¡½º ¿©ºĞ ¸Ş¸ğ¸®
-	wndClass.cbWndExtra = 0;										//À©µµ¿ì ¿©ºĞ ¸Ş¸ğ¸® 
-	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);	//À©µµ¿ì ¹é±×¶ó¿îµå 
-	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);					//À©µµ¿ì Ä¿¼­
-	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);				//À©µµ¿ì ¾ÆÀÌÄÜ
-	wndClass.hInstance = hInstance;									//À©µµ¿ì ÀÎ½ºÅÏ½º ¹øÈ£
-	wndClass.lpfnWndProc = (WNDPROC)WndProc;						//À©µµ¿ì ÇÁ·Î½ÃÁ®
-	wndClass.lpszClassName = _lpszClass;							//À©µµ¿ì Å¬·¡½º ÀÌ¸§
-	wndClass.lpszMenuName = NULL;									//À©µµ¿ì ¸Ş´º ÀÌ¸§
-	wndClass.style = CS_HREDRAW | CS_VREDRAW;						//À©µµ¿ì Ã¢ ½ºÅ¸ÀÏ
+	wndClass.cbClsExtra = 0;										//í´ë˜ìŠ¤ ì—¬ë¶„ ë©”ëª¨ë¦¬
+	wndClass.cbWndExtra = 0;										//ìœˆë„ìš° ì—¬ë¶„ ë©”ëª¨ë¦¬ 
+	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);	//ìœˆë„ìš° ë°±ê·¸ë¼ìš´ë“œ 
+	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);					//ìœˆë„ìš° ì»¤ì„œ
+	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);				//ìœˆë„ìš° ì•„ì´ì½˜
+	wndClass.hInstance = hInstance;									//ìœˆë„ìš° ì¸ìŠ¤í„´ìŠ¤ ë²ˆí˜¸
+	wndClass.lpfnWndProc = (WNDPROC)WndProc;						//ìœˆë„ìš° í”„ë¡œì‹œì ¸
+	wndClass.lpszClassName = _lpszClass;							//ìœˆë„ìš° í´ë˜ìŠ¤ ì´ë¦„
+	wndClass.lpszMenuName = NULL;									//ìœˆë„ìš° ë©”ë‰´ ì´ë¦„
+	wndClass.style = CS_HREDRAW | CS_VREDRAW;						//ìœˆë„ìš° ì°½ ìŠ¤íƒ€ì¼
 
-	//À©µµ¿ì Á¤º¸ µî·Ï
+	//ìœˆë„ìš° ì •ë³´ ë“±ë¡
 	RegisterClass(&wndClass);
 
-	//À©µµ¿ì Ã¢ »ı¼ºÁ¤º¸
+	//ìœˆë„ìš° ì°½ ìƒì„±ì •ë³´
 	_hWnd = CreateWindow(
 		_lpszClass,
 		_lpszClass,
-		WS_OVERLAPPEDWINDOW,		//À©µµ¿ì Ã¢ ½ºÅ¸ÀÏ
-		100,						//À©µµ¿ì ½ÃÀÛ ÁÂÇ¥ X
-		50,							//À©µµ¿ì ½ÃÀÛ ÁÂÇ¥ Y
-		800,						//À©µµ¿ì Ã¢ °¡·ÎÅ©±â
-		600,						//À©µµ¿ì Ã¢ ¼¼·ÎÅ©±â
-		NULL,						//ºÎ¸ğ À©µµ¿ì »ç¿ë¿©ºÎ
-		(HMENU)NULL,				//¸Ş´º »ç¿ë¿©ºÎ
-		hInstance,					//ÀÎ½ºÅÏ½º
-		NULL);						//ÀÚ½Ä À©µµ¿ì »ç¿ë¿©ºÎ
+		WS_OVERLAPPEDWINDOW,		//ìœˆë„ìš° ì°½ ìŠ¤íƒ€ì¼
+		100,						//ìœˆë„ìš° ì‹œì‘ ì¢Œí‘œ X
+		50,							//ìœˆë„ìš° ì‹œì‘ ì¢Œí‘œ Y
+		800,						//ìœˆë„ìš° ì°½ ê°€ë¡œí¬ê¸°
+		600,						//ìœˆë„ìš° ì°½ ì„¸ë¡œí¬ê¸°
+		NULL,						//ë¶€ëª¨ ìœˆë„ìš° ì‚¬ìš©ì—¬ë¶€
+		(HMENU)NULL,				//ë©”ë‰´ ì‚¬ìš©ì—¬ë¶€
+		hInstance,					//ì¸ìŠ¤í„´ìŠ¤
+		NULL);						//ìì‹ ìœˆë„ìš° ì‚¬ìš©ì—¬ë¶€
 
-	//À©µµ¿ì Ã¢À» ¸ğ´ÏÅÍ¿¡ ¶ç¿öÁÜ
+	//ìœˆë„ìš° ì°½ì„ ëª¨ë‹ˆí„°ì— ë„ì›Œì¤Œ
 	ShowWindow(_hWnd, cmdShow);
 
-	//GetMessage : ¸Ş½ÃÁö Á¤º¸°¡ µé¾î¿À¸é ±×¶§ ¹İÀÀ
-	//PeekMessage : ¸Ş½ÃÁö Á¤º¸°¡ µé¾î¿Àµç ¸»µç ¹«Á¶°Ç ¹İÀÀ(»ó½Ã ·çÇÁµ¹°íÀÖÀ½)
+	//GetMessage : ë©”ì‹œì§€ ì •ë³´ê°€ ë“¤ì–´ì˜¤ë©´ ê·¸ë•Œ ë°˜ì‘
+	//PeekMessage : ë©”ì‹œì§€ ì •ë³´ê°€ ë“¤ì–´ì˜¤ë“  ë§ë“  ë¬´ì¡°ê±´ ë°˜ì‘(ìƒì‹œ ë£¨í”„ëŒê³ ìˆìŒ)
 	while (GetMessage(&message, 0, 0, 0))
 	{
-		TranslateMessage(&message);	//ÀÔ·ÂÀÌ µé¾î¿À´Â ¼ø°£ ±× ¸Ş½ÃÁö Ã³¸® ´ã´ç
-		DispatchMessage(&message);	//½ÇÁ¦·Î À©µµ¿ì¿¡ ±× ¸Ş½ÃÁö Àü´Ş
+		TranslateMessage(&message);	//ì…ë ¥ì´ ë“¤ì–´ì˜¤ëŠ” ìˆœê°„ ê·¸ ë©”ì‹œì§€ ì²˜ë¦¬ ë‹´ë‹¹
+		DispatchMessage(&message);	//ì‹¤ì œë¡œ ìœˆë„ìš°ì— ê·¸ ë©”ì‹œì§€ ì „ë‹¬
 	}
 	
 
@@ -71,69 +71,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		case WM_PAINT :
 		{	
 			hdc = BeginPaint(hWnd, &ps);
-			//ÀÌ¸§¾²±â
-			//À¯
-			//¤·
-			MoveToEx(hdc, 100, 100, NULL);
-			LineTo(hdc, 150, 100);
-			LineTo(hdc, 200, 130);
-			LineTo(hdc, 150, 160);
-			LineTo(hdc, 100, 160);
-			LineTo(hdc, 50, 130);
-			LineTo(hdc, 100, 100);
 			
-			//¤Ğ
-			MoveToEx(hdc, 50, 200, NULL);
-			LineTo(hdc, 200, 200);
-
-			MoveToEx(hdc, 100, 200, NULL);
-			LineTo(hdc, 100, 250);
-
-			MoveToEx(hdc, 150, 200, NULL);
-			LineTo(hdc, 150, 250);
-
-			//ÁÖ
-			//¤¸
-			MoveToEx(hdc, 250, 100, NULL);
-			LineTo(hdc, 400, 100);
-			MoveToEx(hdc, 325, 100, NULL);
-			LineTo(hdc, 250, 150);
-			MoveToEx(hdc, 325, 100, NULL);
-			LineTo(hdc, 400, 150);
-
-			//¤Ì
-			MoveToEx(hdc, 250, 200, NULL);
-			LineTo(hdc, 400, 200);
-			MoveToEx(hdc, 325, 200, NULL);
-			LineTo(hdc, 325, 250);
-
-			//¿ø
-			//¤·
-			MoveToEx(hdc, 500, 100, NULL);
-			LineTo(hdc, 550, 100);
-			LineTo(hdc, 600, 130);
-			LineTo(hdc, 550, 160);
-			LineTo(hdc, 500, 160);
-			LineTo(hdc, 450, 130);
-			LineTo(hdc, 500, 100);
-
-			//¤Ì
-			MoveToEx(hdc, 450, 180, NULL);
-			LineTo(hdc, 600, 180);
-			MoveToEx(hdc, 525, 180, NULL);
-			LineTo(hdc, 525, 230);
-
-			//¤Ã
-			MoveToEx(hdc, 570, 205, NULL);
-			LineTo(hdc, 625, 205);
-			MoveToEx(hdc, 625, 100, NULL);
-			LineTo(hdc, 625, 230);
-			
-			//¤¤
-			MoveToEx(hdc, 550, 200, NULL);
-			LineTo(hdc, 550, 250);
-			LineTo(hdc, 625, 250);
-
 			//^^
 			MoveToEx(hdc, 650, 200, NULL);
 			LineTo(hdc, 675, 175);
@@ -142,18 +80,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			LineTo(hdc, 750, 175);
 			LineTo(hdc, 775, 200);
 
-			//»ç°¢Çü ±×¸®´Â ÇÔ¼ö
+			//ì‚¬ê°í˜• ê·¸ë¦¬ëŠ” í•¨ìˆ˜
 			//Rectangle
 			Rectangle(hdc, 100, 300, 300, 500);
 			Rectangle(hdc, 100, 300, 200, 400);
-			//³ªÁß¿¡ ±×¸°°Ô µ¤¾î¾º¿î´Ù(¼ø¼­°¡ ¹İ´ë¶ó¸é ÀÛÀº »ç°¢ÇüÀº ¾È º¸ÀÏ °Í)
+			//ë‚˜ì¤‘ì— ê·¸ë¦°ê²Œ ë®ì–´ì”Œìš´ë‹¤(ìˆœì„œê°€ ë°˜ëŒ€ë¼ë©´ ì‘ì€ ì‚¬ê°í˜•ì€ ì•ˆ ë³´ì¼ ê²ƒ)
 
-			//µ¿±×¶ó¹Ì ±×¸®´Â ÇÔ¼ö
+			//ë™ê·¸ë¼ë¯¸ ê·¸ë¦¬ëŠ” í•¨ìˆ˜
 			//Ellipse
 			Ellipse(hdc, 100, 300, 300, 500);
 
 
-			//µµÀü : À°¸Á¼º ±×¸®±â
+			//ë„ì „ : ìœ¡ë§ì„± ê·¸ë¦¬ê¸°
 
 			Ellipse(hdc, 50, 50, 550, 550);
 			Ellipse(hdc, 100, 100, 500, 500);
