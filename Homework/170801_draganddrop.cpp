@@ -1,13 +1,13 @@
 #include "stdafx.h"
 
-//Àü¿ªº¯¼ö¸¦ ¼±¾ğÇÑ´Ù¸é ¿ä±â¿ä±â¿ä 
-HINSTANCE _hInstance;		//¾îÇÃ °íÀ¯¹øÈ£
-HWND _hWnd;					//Á¶ÀÛÁú
+//ì „ì—­ë³€ìˆ˜ë¥¼ ì„ ì–¸í•œë‹¤ë©´ ìš”ê¸°ìš”ê¸°ìš” 
+HINSTANCE _hInstance;		//ì–´í”Œ ê³ ìœ ë²ˆí˜¸
+HWND _hWnd;					//ì¡°ì‘ì§ˆ
 
 LPTSTR _lpszClass = TEXT("Iota Team");
 
 POINT _ptMouse;
-//ÇÏ¾Ï¾¥¿ì
+//í•˜ì•”ì‘¤ìš°
 
 POINT _ptBox = { 100,100 };
 POINT _ptBox2 = { 200,200 };
@@ -21,51 +21,51 @@ void setWindowsSize(int x, int y, int width, int height);
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int cmdShow)
 {
-	MSG message;			//¸Ş¼¼Áö
-	WNDCLASS wndClass;		//À©µµ¿ì Á¤º¸¸¦ ´ãÀ» ±¸Á¶Ã¼
+	MSG message;			//ë©”ì„¸ì§€
+	WNDCLASS wndClass;		//ìœˆë„ìš° ì •ë³´ë¥¼ ë‹´ì„ êµ¬ì¡°ì²´
 
 	//Salt Bae 
 	_hInstance = hInstance;
 
-	wndClass.cbClsExtra = 0;										//Å¬·¡½º ¿©ºĞ ¸Ş¸ğ¸®
-	wndClass.cbWndExtra = 0;										//À©µµ¿ì ¿©ºĞ ¸Ş¸ğ¸® 
-	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);	//À©µµ¿ì ¹é±×¶ó¿îµå 
-	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);					//À©µµ¿ì Ä¿¼­
-	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);				//À©µµ¿ì ¾ÆÀÌÄÜ
-	wndClass.hInstance = hInstance;									//À©µµ¿ì ÀÎ½ºÅÏ½º ¹øÈ£
-	wndClass.lpfnWndProc = (WNDPROC)WndProc;						//À©µµ¿ì ÇÁ·Î½ÃÁ®
-	wndClass.lpszClassName = _lpszClass;							//À©µµ¿ì Å¬·¡½º ÀÌ¸§
-	wndClass.lpszMenuName = NULL;									//À©µµ¿ì ¸Ş´º ÀÌ¸§
-	wndClass.style = CS_HREDRAW | CS_VREDRAW;						//À©µµ¿ì Ã¢ ½ºÅ¸ÀÏ
+	wndClass.cbClsExtra = 0;										//í´ë˜ìŠ¤ ì—¬ë¶„ ë©”ëª¨ë¦¬
+	wndClass.cbWndExtra = 0;										//ìœˆë„ìš° ì—¬ë¶„ ë©”ëª¨ë¦¬ 
+	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);	//ìœˆë„ìš° ë°±ê·¸ë¼ìš´ë“œ 
+	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);					//ìœˆë„ìš° ì»¤ì„œ
+	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);				//ìœˆë„ìš° ì•„ì´ì½˜
+	wndClass.hInstance = hInstance;									//ìœˆë„ìš° ì¸ìŠ¤í„´ìŠ¤ ë²ˆí˜¸
+	wndClass.lpfnWndProc = (WNDPROC)WndProc;						//ìœˆë„ìš° í”„ë¡œì‹œì ¸
+	wndClass.lpszClassName = _lpszClass;							//ìœˆë„ìš° í´ë˜ìŠ¤ ì´ë¦„
+	wndClass.lpszMenuName = NULL;									//ìœˆë„ìš° ë©”ë‰´ ì´ë¦„
+	wndClass.style = CS_HREDRAW | CS_VREDRAW;						//ìœˆë„ìš° ì°½ ìŠ¤íƒ€ì¼
 
-	//À©µµ¿ì Á¤º¸ µî·Ï
+	//ìœˆë„ìš° ì •ë³´ ë“±ë¡
 	RegisterClass(&wndClass);
 
-	//À©µµ¿ì Ã¢ »ı¼ºÁ¤º¸
+	//ìœˆë„ìš° ì°½ ìƒì„±ì •ë³´
 	_hWnd = CreateWindow(
 		WINNAME,
 		WINNAME,
-		WS_OVERLAPPEDWINDOW,		//À©µµ¿ì Ã¢ ½ºÅ¸ÀÏ
-		WINSTARTX,					//À©µµ¿ì ½ÃÀÛ ÁÂÇ¥ X
-		WINSTARTY,					//À©µµ¿ì ½ÃÀÛ ÁÂÇ¥ Y
-		WINSIZEX,					//À©µµ¿ì Ã¢ °¡·ÎÅ©±â
-		WINSIZEY,					//À©µµ¿ì Ã¢ ¼¼·ÎÅ©±â
-		NULL,						//ºÎ¸ğ À©µµ¿ì »ç¿ë¿©ºÎ
-		(HMENU)NULL,				//¸Ş´º »ç¿ë¿©ºÎ
-		hInstance,					//ÀÎ½ºÅÏ½º
-		NULL);						//ÀÚ½Ä À©µµ¿ì »ç¿ë¿©ºÎ
+		WS_OVERLAPPEDWINDOW,		//ìœˆë„ìš° ì°½ ìŠ¤íƒ€ì¼
+		WINSTARTX,					//ìœˆë„ìš° ì‹œì‘ ì¢Œí‘œ X
+		WINSTARTY,					//ìœˆë„ìš° ì‹œì‘ ì¢Œí‘œ Y
+		WINSIZEX,					//ìœˆë„ìš° ì°½ ê°€ë¡œí¬ê¸°
+		WINSIZEY,					//ìœˆë„ìš° ì°½ ì„¸ë¡œí¬ê¸°
+		NULL,						//ë¶€ëª¨ ìœˆë„ìš° ì‚¬ìš©ì—¬ë¶€
+		(HMENU)NULL,				//ë©”ë‰´ ì‚¬ìš©ì—¬ë¶€
+		hInstance,					//ì¸ìŠ¤í„´ìŠ¤
+		NULL);						//ìì‹ ìœˆë„ìš° ì‚¬ìš©ì—¬ë¶€
 
 	setWindowsSize(WINSTARTX, WINSTARTY, WINSIZEX, WINSIZEY);
 
-	//À©µµ¿ì Ã¢À» ¸ğ´ÏÅÍ¿¡ ¶ç¿öÁÜ
+	//ìœˆë„ìš° ì°½ì„ ëª¨ë‹ˆí„°ì— ë„ì›Œì¤Œ
 	ShowWindow(_hWnd, cmdShow);
 
-	//GetMessage : ¸Ş½ÃÁö Á¤º¸°¡ µé¾î¿À¸é ±×¶§ ¹İÀÀ
-	//PeekMessage : ¸Ş½ÃÁö Á¤º¸°¡ µé¾î¿Àµç ¸»µç ¹«Á¶°Ç ¹İÀÀ(»ó½Ã ·çÇÁµ¹°íÀÖÀ½)
+	//GetMessage : ë©”ì‹œì§€ ì •ë³´ê°€ ë“¤ì–´ì˜¤ë©´ ê·¸ë•Œ ë°˜ì‘
+	//PeekMessage : ë©”ì‹œì§€ ì •ë³´ê°€ ë“¤ì–´ì˜¤ë“  ë§ë“  ë¬´ì¡°ê±´ ë°˜ì‘(ìƒì‹œ ë£¨í”„ëŒê³ ìˆìŒ)
 	while (GetMessage(&message, 0, 0, 0))
 	{
-		TranslateMessage(&message);	//ÀÔ·ÂÀÌ µé¾î¿À´Â ¼ø°£ ±× ¸Ş½ÃÁö Ã³¸® ´ã´ç
-		DispatchMessage(&message);	//½ÇÁ¦·Î À©µµ¿ì¿¡ ±× ¸Ş½ÃÁö Àü´Ş
+		TranslateMessage(&message);	//ì…ë ¥ì´ ë“¤ì–´ì˜¤ëŠ” ìˆœê°„ ê·¸ ë©”ì‹œì§€ ì²˜ë¦¬ ë‹´ë‹¹
+		DispatchMessage(&message);	//ì‹¤ì œë¡œ ìœˆë„ìš°ì— ê·¸ ë©”ì‹œì§€ ì „ë‹¬
 	}
 
 	return message.wParam;
@@ -78,7 +78,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
 	switch (iMessage)
 	{
-		//À©µµ¿ì Ã¢ÀÌ ÄÑÁú¶§¸¸ ½ÇÇàÀÌ µÇ´Â ÇÔ¼ö
+		//ìœˆë„ìš° ì°½ì´ ì¼œì§ˆë•Œë§Œ ì‹¤í–‰ì´ ë˜ëŠ” í•¨ìˆ˜
 		case WM_CREATE:
 			
 		break;
@@ -90,7 +90,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
 			char str[64];
 			char str2[64];
-			sprintf_s(str, "¹Ú½ºÁÂÇ¥ X : %d, Y : %d", _ptBox.x, _ptBox.y);
+			sprintf_s(str, "ë°•ìŠ¤ì¢Œí‘œ X : %d, Y : %d", _ptBox.x, _ptBox.y);
 			sprintf_s(str2, "%d", isClicked);
 			TextOut(hdc, 50, 50, str, strlen(str));
 			TextOut(hdc, 50, 100, str2, strlen(str2));
@@ -137,7 +137,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			break;
 
 		case WM_DESTROY:
-			//À©µµ¿ì Ã¢ Á¾·á ÇÔ¼ö
+			//ìœˆë„ìš° ì°½ ì¢…ë£Œ í•¨ìˆ˜
 			PostQuitMessage(0);
 		break;
 	}
